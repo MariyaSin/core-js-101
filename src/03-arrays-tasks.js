@@ -411,7 +411,6 @@ function findAllOccurences(arr, item) {
  */
 function toStringList(arr) {
   return arr.join(',');
-  // throw new Error('Not implemented');
 }
 
 
@@ -495,8 +494,10 @@ function getIntervalArray(/* start, end */) {
  *   [ 'a', 'a', 'a', 'a' ]  => [ 'a' ]
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  const set = new Set();
+  arr.map((x) => set.add(x));
+  return Array.from(set);
 }
 
 /**
@@ -588,6 +589,19 @@ function getElementByIndexes(/* arr, indexes */) {
  *
  */
 function swapHeadAndTail(/* arr */) {
+  /* let midlIndex = arr.length / 2;
+  let firstArr = [];
+  let secondArr = [];
+  const middleValue = [];
+  if (midlIndex % 1 === 0) {
+    firstArr = arr.splice(0, midlIndex);
+    secondArr = arr.splice(midlIndex, arr.length);
+  } else {
+    firstArr = arr.splice(0, Math.ceil(midlIndex));
+    secondArr = arr.splice(Math.ceil(midlIndex) + 1, arr.length);
+    midlIndex = arr.splice(Math.ceil(midlIndex));
+  }
+  return firstArr.concat(middleValue, secondArr); */
   throw new Error('Not implemented');
 }
 

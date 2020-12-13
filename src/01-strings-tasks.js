@@ -279,6 +279,7 @@ function isString(/* value */) {
  *   'K♠' => 51
  */
 function getCardId(/* value */) {
+  // return value.indexOf;
   throw new Error('Not implemented');
 }
 
