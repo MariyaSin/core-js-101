@@ -30,6 +30,8 @@
  */
 function willYouMarryMe(/* isPositiveAnswer */) {
   throw new Error('Not implemented');
+
+  // return isPositiveAnswer ? 'Hooray!!! She said "Yes"!' : 'Oh no, she said "No".';
 }
 
 
@@ -49,6 +51,7 @@ function willYouMarryMe(/* isPositiveAnswer */) {
  *
  */
 function processAllPromises(/* array */) {
+  // return Promise.all(array);
   throw new Error('Not implemented');
 }
 

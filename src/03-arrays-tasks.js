@@ -303,10 +303,18 @@ function get3TopItems(/* arr */) {
  *   [ null, 1, 'elephant' ] => 1
  *   [ 1, '2' ] => 1
  */
+/* eslint-disable no-param-reassign */
 function getPositivesCount(/* arr */) {
-  /* return arr.reduce((x, value) => x = value > 0 ? x += 1 : x, 0); */
+  /* return arr.reduce((x, value) => {
+    if (value > 0) {
+      x += 1;
+    }
+    return x;
+  }, 0); */
   throw new Error('Not implemented');
 }
+
+/* eslint-disable no-param-reassign */
 
 /**
  * Sorts digit names
@@ -337,8 +345,8 @@ function sortDigitNamesByNumericOrder(/* arr */) {
  *   [ -1, 1, -1, 1 ]      => 0
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
-function getItemsSum(/* arr */) {
-  throw new Error('Not implemented');
+function getItemsSum(arr) {
+  return arr.reduce((x, i) => x + i, 0);
 }
 
 /**
@@ -353,9 +361,16 @@ function getItemsSum(/* arr */) {
  *  [ -1, 'false', null, 0 ] => 2
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
-function getFalsyValuesCount(/* arr */) {
-  throw new Error('Not implemented');
+/* eslint-disable no-param-reassign */
+function getFalsyValuesCount(arr) {
+  return arr.reduce((x, i) => {
+    if (!i) {
+      x += 1;
+    }
+    return x;
+  }, 0);
 }
+/* eslint-disable no-param-reassign */
 
 /**
  * Returns a number of all occurences of the specified item in an array
@@ -371,9 +386,17 @@ function getFalsyValuesCount(/* arr */) {
  *    [ null, undefined, null ], null => 2
  *    [ true, 0, 1, 'true' ], true => 1
  */
-function findAllOccurences(/* arr, item */) {
-  throw new Error('Not implemented');
+
+/* eslint-disable no-param-reassign */
+function findAllOccurences(arr, item) {
+  return arr.reduce((x, i) => {
+    if (i === item) {
+      x += 1;
+    }
+    return x;
+  }, 0);
 }
+/* eslint-enable no-param-reassign */
 
 /**
  * Concatenates all elements from specified array into single string with ',' delimeter
@@ -386,8 +409,8 @@ function findAllOccurences(/* arr, item */) {
  *    [1, 2, 3, 4, 5]                   => '1,2,3,4,5'
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
-function toStringList(/* arr */) {
-  throw new Error('Not implemented');
+function toStringList(arr) {
+  return arr.join(',');
 }
 
 
@@ -471,8 +494,10 @@ function getIntervalArray(/* start, end */) {
  *   [ 'a', 'a', 'a', 'a' ]  => [ 'a' ]
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  const set = new Set();
+  arr.map((x) => set.add(x));
+  return Array.from(set);
 }
 
 /**
@@ -564,6 +589,19 @@ function getElementByIndexes(/* arr, indexes */) {
  *
  */
 function swapHeadAndTail(/* arr */) {
+  /* let midlIndex = arr.length / 2;
+  let firstArr = [];
+  let secondArr = [];
+  const middleValue = [];
+  if (midlIndex % 1 === 0) {
+    firstArr = arr.splice(0, midlIndex);
+    secondArr = arr.splice(midlIndex, arr.length);
+  } else {
+    firstArr = arr.splice(0, Math.ceil(midlIndex));
+    secondArr = arr.splice(Math.ceil(midlIndex) + 1, arr.length);
+    midlIndex = arr.splice(Math.ceil(midlIndex));
+  }
+  return firstArr.concat(middleValue, secondArr); */
   throw new Error('Not implemented');
 }
 
