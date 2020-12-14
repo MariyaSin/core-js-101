@@ -95,8 +95,8 @@ function getFirstChar(value) {
  *   'cat'              => 'cat'
  *   '\tHello, World! ' => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingAndTrailingWhitespaces(value) {
+  return value.trim();
 }
 
 /**
@@ -203,11 +203,11 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(/* width, height */) {
-  /* let str = '\'' + '┌' + '-'.repeat(width) + '┐' + '\\n' + '\'' + '\+';
-  for (let i = 1; i < height - 1; i ++) {
-    str += '\n' + '\'' + '|' + ' '.repeat(width) + '|' + '\\n' + '\'' + '\+';
+  /* let str = '┌' + '-'.repeat(width) + '┐' + '\n';
+  for (let i = 1; i < height - 1; i += 1) {
+    str += '|' + ' '.repeat(width) + '|' + '\n';
   }
-  return str += '\'' + '└' + '-'.repeat(width) + '┘' + '\\n' + '\''; */
+  return str += '└' + '-'.repeat(width) + '┘' + '\n'; */
   throw new Error('Not implemented');
 }
 
@@ -228,8 +228,18 @@ function getRectangleString(/* width, height */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  return str.split('').map((x) => {
+    const cod = x.charCodeAt();
+    if ((cod >= 65 && cod + 13 <= 90) || (cod >= 97 && cod + 13 <= 122)) {
+      return String.fromCharCode(cod + 13);
+    } if (cod >= 65 && cod <= 90) {
+      return String.fromCharCode(cod + 13 - 90 + 64);
+    } if (cod >= 97 && cod <= 122) {
+      return String.fromCharCode(cod + 13 - 122 + 96);
+    }
+    return x;
+  }).join('');
 }
 
 /**
@@ -245,12 +255,8 @@ function encodeToRot13(/* str */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  /* if (typeof value === 'object' && value !== null) {
-    value.toString();
-  }
-  return typeof value === 'string'; */
-  throw new Error('Not implemented');
+function isString(value) {
+  return typeof value === 'string' || value instanceof String;
 }
 
 
@@ -278,9 +284,9 @@ function isString(/* value */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  // return value.indexOf;
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const arr = ['A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣', 'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦', 'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥', 'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠'];
+  return arr.indexOf(value);
 }
 
 
