@@ -97,8 +97,9 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isTriangle(...arg) {
+  arg.sort((a, b) => a - b);
+  return (arg[0] + arg[1]) > arg[2];
 }
 
 
@@ -165,8 +166,9 @@ function doRectanglesOverlap(/* rect1, rect2 */) {
  *   { center: { x:0, y:0 }, radius:10 },  { x:10, y:10 }   => false
  *
  */
-function isInsideCircle(/* circle, point */) {
-  throw new Error('Not implemented');
+function isInsideCircle(circle, point) {
+  const s = Math.sqrt((point.x - circle.center.x) ** 2 + (point.y - circle.center.y) ** 2);
+  return s < circle.radius;
 }
 
 
@@ -181,8 +183,12 @@ function isInsideCircle(/* circle, point */) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(/* str */) {
-  throw new Error('Not implemented');
+function findFirstSingleChar(str) {
+  const arr = str.split('');
+  for (let i = 0; i < arr.length; i += 1) {
+    if (arr[i] !== ' ' && str.lastIndexOf(arr[i]) === str.indexOf(arr[i])) return arr[i];
+  }
+  return null;
 }
 
 
@@ -322,8 +328,18 @@ function getDigitalRoot(num) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(/* str */) {
-  throw new Error('Not implemented');
+function isBracketsBalanced(str) {
+  const steck = [];
+  const arr = str.split('');
+  for (let i = 0; i < arr.length; i += 1) {
+    if (arr[i] === '(' || arr[i] === '{' || arr[i] === '[' || arr[i] === '<') steck.push(arr[i]);
+    else if (arr[i] === ')' && steck[steck.length - 1] === '(') steck.pop();
+    else if (arr[i] === ']' && steck[steck.length - 1] === '[') steck.pop();
+    else if (arr[i] === '}' && steck[steck.length - 1] === '{') steck.pop();
+    else if (arr[i] === '>' && steck[steck.length - 1] === '<') steck.pop();
+    else return false;
+  }
+  return steck.length === 0;
 }
 
 
